@@ -1,90 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-HK">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cantonese Audio</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      max-width: 720px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #222;
-      line-height: 1.5;
-    }
-    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-    p.note { color: #666; margin-top: 0; }
-    ul { list-style: none; padding: 0; }
-    li {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 0.75rem;
-    }
-    .title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 0.4rem;
-    }
-    .title a { font-weight: 600; color: #0b5cad; text-decoration: none; }
-    .title a:hover { text-decoration: underline; }
-    .size { color: #888; font-size: 0.85rem; white-space: nowrap; }
-    audio { width: 100%; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>有聲書(粵語)目錄</title>
+<style>
+  :root { --bg:#faf8f5; --fg:#222; --muted:#777; --accent:#8a5a2b; --line:#e6e1da; --hover:#f1ece5; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1b1a19; --fg:#eee; --muted:#999; --accent:#d9a066; --line:#333; --hover:#26241f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); line-height:1.5;
+         font-family: system-ui, -apple-system, "PingFang HK", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:24px 16px 150px; }
+  h1 { font-size:1.5rem; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 20px; font-size:.9rem; }
+  ol { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+  li { display:flex; align-items:center; gap:12px; padding:12px 8px; border-bottom:1px solid var(--line); cursor:pointer; }
+  li:hover, li.playing { background:var(--hover); }
+  li.playing .t { color:var(--accent); font-weight:600; }
+  .n { width:2em; text-align:right; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .info { flex:1; min-width:0; }
+  .ch, .meta { font-size:.8rem; color:var(--muted); }
+  .meta { white-space:nowrap; }
+  .dl { color:var(--muted); text-decoration:none; padding:4px 6px; font-size:1.1rem; }
+  .dl:hover { color:var(--accent); }
+  .player { position:fixed; left:0; right:0; bottom:0; background:var(--bg); border-top:1px solid var(--line); padding:10px 16px 14px; }
+  .wrap { max-width:720px; margin:0 auto; }
+  .now { font-size:.9rem; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ctrls { display:flex; gap:8px; align-items:center; }
+  audio { flex:1; min-width:0; }
+  button, select { font:inherit; background:none; color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:4px 8px; cursor:pointer; }
+</style>
 </head>
 <body>
-  <h1>Cantonese Audio</h1>
-  <p class="note">Press play to listen, or click a file name to download it.</p>
+<main>
+  <h1>有聲書(粵語)</h1>
+  <p class="sub" id="sub"></p>
+  <ol id="list"></ol>
+</main>
 
-  <ul>
-    <li>
-      <div class="title"><a href="cantonese/00a__can.mp3" download>00a</a><span class="size">6.1 MB</span></div>
-      <audio controls preload="none" src="cantonese/00a__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/00b__can.mp3" download>00b</a><span class="size">1.9 MB</span></div>
-      <audio controls preload="none" src="cantonese/00b__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/01__can.mp3" download>01</a><span class="size">25.3 MB</span></div>
-      <audio controls preload="none" src="cantonese/01__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/02__can.mp3" download>02</a><span class="size">22.4 MB</span></div>
-      <audio controls preload="none" src="cantonese/02__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/03__can.mp3" download>03</a><span class="size">22.9 MB</span></div>
-      <audio controls preload="none" src="cantonese/03__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/04__can.mp3" download>04</a><span class="size">28.7 MB</span></div>
-      <audio controls preload="none" src="cantonese/04__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/05__can.mp3" download>05</a><span class="size">21.9 MB</span></div>
-      <audio controls preload="none" src="cantonese/05__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/06__can.mp3" download>06</a><span class="size">22.5 MB</span></div>
-      <audio controls preload="none" src="cantonese/06__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/07__can.mp3" download>07</a><span class="size">24.6 MB</span></div>
-      <audio controls preload="none" src="cantonese/07__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/08__can.mp3" download>08</a><span class="size">26.4 MB</span></div>
-      <audio controls preload="none" src="cantonese/08__can.mp3"></audio>
-    </li>
-    <li>
-      <div class="title"><a href="cantonese/09__can.mp3" download>09</a><span class="size">30.0 MB</span></div>
-      <audio controls preload="none" src="cantonese/09__can.mp3"></audio>
-    </li>
-  </ul>
+<div class="player">
+  <div class="wrap">
+    <div class="now" id="now">尚未播放</div>
+    <div class="ctrls">
+      <button id="prev" title="上一個">⏮</button>
+      <audio id="audio" controls preload="none"></audio>
+      <button id="next" title="下一個">⏭</button>
+      <select id="rate" title="播放速度">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="1.75">1.75×</option>
+        <option value="2">2×</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<script>
+const DIR = "cantonese/";
+
+// [檔名, 大小(bytes), 章節, 標題]
+const files = [
+  ["00a__can.mp3",  6367958, "",       "前言"],
+  ["00b__can.mp3",  2011360, "",       "閱讀指南"],
+  ["01__can.mp3",  26480780, "第一章", "你從來就不是老闆"],
+  ["02__can.mp3",  23473041, "第二章", "科學正在追趕卻跨不過那條界線"],
+  ["03__can.mp3",  23994340, "第三章", "充不了電的手機"],
+  ["04__can.mp3",  30043673, "第四章", "掙扎證明你是活的"],
+  ["05__can.mp3",  22917260, "第五章", "認識你的內在藍圖：身體魂靈"],
+  ["06__can.mp3",  23575545, "第六章", "被劫持的指揮中心：心思意志情感"],
+  ["07__can.mp3",  25798043, "第七章", "改寫那些你沒有選擇的劇本"],
+  ["08__can.mp3",  27660051, "第八章", "不效法這破碎的世界"],
+  ["09__can.mp3",  31474974, "第九章", "把肉體釘在十字架上"],
+];
+
+const $ = id => document.getElementById(id);
+const audio = $("audio"), list = $("list"), rate = $("rate");
+const KEY = "audiobook-progress-cantonese";   // separate from the Mandarin page's progress
+let cur = -1, lastSave = 0;
+
+const store = {
+  get() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } },
+  set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} },
+};
+
+function info(i) {
+  const [f, , ch, title] = files[i];
+  const num = f.split("__")[0].replace(/^0(?=.)/, "");
+  return { num, ch: ch || "", title: title || "(待補標題)" };
+}
+const url = f => DIR + encodeURIComponent(f);
+const label = i => { const { ch, title } = info(i); return ch ? `${ch}:${title}` : title; };
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+
+$("sub").textContent = `共 ${files.length} 個檔案 · 點選播放,播完自動接下一個`;
+
+files.forEach(([f, bytes], i) => {
+  const { num, ch, title } = info(i);
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span class="n">${num}</span>
+    <div class="info"><div class="ch">${ch}</div><div class="t">${title}</div></div>
+    <span class="meta">${(bytes / 1048576).toFixed(1)} MB</span>
+    <a class="dl" href="${url(f)}" download title="下載">⤓</a>`;
+  li.addEventListener("click", e => { if (!e.target.closest(".dl")) play(i); });
+  list.appendChild(li);
+});
+
+function load(i, startAt = 0) {
+  cur = i;
+  const { ch, title } = info(i);
+  audio.src = url(files[i][0]);
+  audio.defaultPlaybackRate = audio.playbackRate = +rate.value;
+  if (startAt) audio.addEventListener("loadedmetadata", () => { audio.currentTime = startAt; }, { once: true });
+  [...list.children].forEach((li, j) => li.classList.toggle("playing", j === i));
+  $("now").textContent = label(i);
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({ title, artist: ch || "有聲書(粵語)" });
+  }
+}
+
+function play(i) {
+  if (i < 0 || i >= files.length) return;
+  if (i === cur && audio.src) { audio.paused ? audio.play() : audio.pause(); return; }
+  load(i);
+  audio.play();
+}
+
+$("prev").onclick = () => play(cur - 1);
+$("next").onclick = () => play(cur + 1);
+rate.onchange = () => { audio.defaultPlaybackRate = audio.playbackRate = +rate.value; };
+
+audio.addEventListener("timeupdate", () => {
+  if (Date.now() - lastSave > 3000) { lastSave = Date.now(); store.set({ i: cur, t: audio.currentTime }); }
+});
+audio.addEventListener("ended", () => {
+  if (cur + 1 < files.length) play(cur + 1);
+  else store.set({ i: cur, t: 0 });
+});
+
+if ("mediaSession" in navigator) {
+  navigator.mediaSession.setActionHandler("previoustrack", () => play(cur - 1));
+  navigator.mediaSession.setActionHandler("nexttrack", () => play(cur + 1));
+}
+
+// Resume where you left off
+const saved = store.get();
+if (saved && files[saved.i]) {
+  load(saved.i, saved.t);
+  if (saved.t > 5) $("now").textContent += ` — 上次聽到 ${fmt(saved.t)}`;
+}
+</script>
 </body>
 </html>
 
